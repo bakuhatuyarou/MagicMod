@@ -1,10 +1,10 @@
 package MagicMod;
 
-import net.minecraft.block.Block;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
+import net.minecraft.block.Block;
 
 @Mod(modid = "MagicMod", name = "MagicMod", version = "1.0")
 public class MagicModClass {
@@ -17,6 +17,8 @@ public class MagicModClass {
 		magicBlock = new MagicBlock();
 
 		GameRegistry.registerBlock(magicBlock, "MagicBlock");
+		
+		
 
 	}
 }

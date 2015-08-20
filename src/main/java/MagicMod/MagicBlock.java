@@ -2,6 +2,8 @@ package MagicMod;
 
 import java.util.Random;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -9,8 +11,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class MagicBlock extends Block {
 
@@ -27,14 +27,14 @@ public class MagicBlock extends Block {
 		setBlockName("magicBlock");/*システム名の設定*/
 		setBlockTextureName("magicmod:MagicBlockCore");/*ブロックのテクスチャの指定(複数指定の場合は消してください)*/
 		/*以下のものは消しても結構です*/
-		setHardness(1.5F);/*硬さ*/
-		setResistance(1.0F);/*爆破耐性*/
+		setHardness(2.0F);/*硬さ*/
+		setResistance(2.5F);/*爆破耐性*/
 		setStepSound(Block.soundTypeStone);/*ブロックの上を歩いた時の音*/
 		/*setBlockUnbreakable();*//*ブロックを破壊不可に設定*/
 		/*setTickRandomly(true);*//*ブロックのtick処理をランダムに。デフォルトfalse*/
 		/*disableStats();*//*ブロックの統計情報を保存しない*/
 		setLightOpacity(1);/*ブロックの透過係数。デフォルト０（不透過）*/
-		setLightLevel(1.0F);/*明るさ 1.0F = 15*/
+		setLightLevel(0.3F);/*明るさ 1.0F = 15*/
 	}
 
 	@Override
