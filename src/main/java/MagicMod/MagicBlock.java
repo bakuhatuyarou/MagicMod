@@ -9,6 +9,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
@@ -79,6 +80,13 @@ public class MagicBlock extends Block {
 		}
 		else{
 				return SideIcon;
+
+
 		}
+	}
+
+	public Item setCreativeTab(MagicModCT tabssample) {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
 	}
 }
