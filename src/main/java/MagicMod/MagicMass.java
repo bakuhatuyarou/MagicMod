@@ -25,7 +25,7 @@ public class MagicMass extends Block {
 
 		super(Material.rock);
 		setCreativeTab(CreativeTabs.tabBlock);/*クリエイティブタブの選択*/
-		setBlockName("magicBlock");/*システム名の設定*/
+		setBlockName("magicmass");/*システム名の設定*/
 		setBlockTextureName("magicmod:MagicMass");/*ブロックのテクスチャの指定(複数指定の場合は消してください)*/
 		/*以下のものは消しても結構です*/
 		setHardness(2.0F);/*硬さ*/

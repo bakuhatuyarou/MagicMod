@@ -22,9 +22,9 @@ public class MagicMod {
 		magicBlock = new MagicBlock();
 
 		GameRegistry.registerBlock(magicBlock, "MagicBlock");
-		
+
 		MagicMass = new MagicMass();
-		
+
 		GameRegistry.registerBlock(MagicMass, "MagicMass");
 
 	}
@@ -41,7 +41,11 @@ public class MagicMod {
 				'G',Items.gold_ingot,
 				'R',Blocks.redstone_block
 				);
-		
+		GameRegistry.addRecipe(new ItemStack(MagicMass),
+				"DD",
+				"DD",
+				'D',Blocks.dirt
+				);
 	}
 
 }
