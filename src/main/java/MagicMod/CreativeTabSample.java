@@ -16,7 +16,7 @@ public class CreativeTabSample extends CreativeTabs
 	@SideOnly(Side.CLIENT)
 	public Item getTabIconItem()
 	{
-		return MagicModCT.itemSample;
+		return MagicModCreativeTab.itemSample;
 	}
  
 	@Override

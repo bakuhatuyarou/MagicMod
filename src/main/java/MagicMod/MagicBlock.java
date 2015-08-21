@@ -85,7 +85,7 @@ public class MagicBlock extends Block {
 		}
 	}
 
-	public Item setCreativeTab(MagicModCT tabssample) {
+	public Item setCreativeTab(MagicModCreativeTab tabssample) {
 		// TODO 自動生成されたメソッド・スタブ
 		return null;
 	}

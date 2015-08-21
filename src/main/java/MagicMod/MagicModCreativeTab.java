@@ -6,7 +6,7 @@ import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
-public class MagicModCT {
+public class MagicModCreativeTab {
 
 	public static final CreativeTabs tabsSample = new CreativeTabSample("Sample");
 
@@ -15,7 +15,7 @@ public class MagicModCT {
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		itemSample = (new MagicModCT(7000)).setCreativeTab(tabsSample);
+		itemSample = (new MagicModCreativeTab(7000)).setCreativeTab(tabsSample);
 
 		LanguageRegistry.addName(itemSample, "CreativeTabSample");
 	}
