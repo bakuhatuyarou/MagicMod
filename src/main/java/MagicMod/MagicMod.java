@@ -1,14 +1,14 @@
 package MagicMod;
 
+import net.minecraft.block.Block;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
 
 @Mod(modid = "MagicMod", name = "MagicMod", version = "1.0")
 public class MagicMod {
@@ -32,10 +32,9 @@ public class MagicMod {
 				"DGD",
 				"GRG",
 				"DGD",
-				"D",Items.diamond,
-				"G",Items.gold_ingot,
-				"R",Blocks.redstone_block
-
+				'D',Items.diamond,
+				'G',Items.gold_ingot,
+				'R',Blocks.redstone_block
 				);
 	}
 
