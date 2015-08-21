@@ -15,7 +15,7 @@ public class MagicModCreativeTab {
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
-		itemSample = (new MagicModCreativeTab(7000)).setCreativeTab(tabsSample);
+	//	itemSample = (new MagicModCreativeTab(7000)).setCreativeTab(tabsSample);
 
 		LanguageRegistry.addName(itemSample, "CreativeTabSample");
 	}

@@ -26,7 +26,8 @@ public class MagicMod {
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event){
 
-		GameRegistry.addShapelessRecipe(new ItemStack(new MagicBlock() ),
+		//レシピ追加
+		GameRegistry.addShapelessRecipe(new ItemStack(magicBlock),
 				new Object[] {Blocks.dirt, Blocks.dirt} );
 	}
 
