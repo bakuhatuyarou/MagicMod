@@ -28,14 +28,7 @@ public class MagicMod {
 		//MagicBlock追加
 		magicBlock = new MagicBlock();
 		GameRegistry.registerBlock(magicBlock, "MagicBlock");
-<<<<<<< HEAD
-
-		MagicMass = new MagicMass();
-
-		GameRegistry.registerBlock(MagicMass, "MagicMass");
-=======
 		LanguageRegistry.addName(magicBlock, "MagicBlock");
->>>>>>> 78e61e6d7e1e62ad0b4bd6006dca8dff84a351e8
 
 		//MagicMass追加
 		magicMass = new MagicMass();
@@ -55,13 +48,10 @@ public class MagicMod {
 				'G',Items.gold_ingot,
 				'R',Blocks.redstone_block
 				);
-<<<<<<< HEAD
-		GameRegistry.addRecipe(new ItemStack(MagicMass),
+		GameRegistry.addRecipe(new ItemStack(magicMass),
 				"DD",
 				"DD",
 				'D',Blocks.dirt
 				);
-=======
->>>>>>> 78e61e6d7e1e62ad0b4bd6006dca8dff84a351e8
 	}
 }
