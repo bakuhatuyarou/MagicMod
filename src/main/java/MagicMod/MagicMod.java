@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -22,6 +23,9 @@ public class MagicMod {
 	public static Block magicBlock;
 	public static Block magicMass;
 
+	//Item
+	public static Item magicDust;
+
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 
@@ -34,6 +38,11 @@ public class MagicMod {
 		magicMass = new MagicMass();
 		GameRegistry.registerBlock(magicMass, "MagicMass");
 		LanguageRegistry.addName(magicMass, "MagicMass");
+
+		//MagicDust追加
+		magicDust = new MagicDust();
+		GameRegistry.registerItem(magicDust, "MagicDust");
+		LanguageRegistry.addName(magicDust, "MagicDust");
 	}
 
 	@Mod.EventHandler
