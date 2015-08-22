@@ -2,6 +2,13 @@ package MagicMod;
 
 import java.util.Random;
 
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
@@ -14,13 +21,6 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.OreGenEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid = "MagicMod", name = "MagicMod", version = "1.0")
 public class MagicMod {
@@ -31,6 +31,7 @@ public class MagicMod {
 	//Block
 	public static Block magicBlock;
 	public static Block magicMass;
+	public static Block magicOre;
 
 	//Item
 	public static Item magicDust;
@@ -52,6 +53,11 @@ public class MagicMod {
 		magicDust = new MagicDust();
 		GameRegistry.registerItem(magicDust, "MagicDust");
 		LanguageRegistry.addName(magicDust, "MagicDust");
+		
+		//MagicOre追加
+		magicOre = new MagicOre ();
+		GameRegistry.registerBlock(magicOre, "MagicOre");
+		LanguageRegistry.addName(magicOre, "MagicOre");
 	}
 
 	@Mod.EventHandler
@@ -81,7 +87,7 @@ public class MagicMod {
 	@SubscribeEvent
 	public void generateOrePre(OreGenEvent.Pre event){
 
-		WorldGenerator bedrockGen = new WorldGenMinable(magicMass, 9);
+		WorldGenerator bedrockGen = new WorldGenMinable(magicOre, 9);
 		if(TerrainGen.generateOre(event.world, event.rand,bedrockGen, event.worldX, event.worldZ , OreGenEvent.GenerateMinable.EventType.CUSTOM))
 			genStandardOre1(event.world, event.worldX, event.worldZ, 20, bedrockGen, 0, 96, event.rand);
 	}
