@@ -79,8 +79,6 @@ public class MagicMass extends Block {
 		}
 		else{
 				return SideIcon;
-
-
 		}
 	}
 

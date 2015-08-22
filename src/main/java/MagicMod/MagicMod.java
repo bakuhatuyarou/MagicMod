@@ -2,13 +2,6 @@ package MagicMod;
 
 import java.util.Random;
 
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
@@ -21,6 +14,14 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.terraingen.OreGenEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid = "MagicMod", name = "MagicMod", version = "1.0")
 public class MagicMod {
@@ -40,6 +41,9 @@ public class MagicMod {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 
+		//Messageの登録呼び出し
+		PacketHandler.init();
+
 		//MagicBlock追加
 		magicBlock = new MagicBlock();
 		GameRegistry.registerBlock(magicBlock, "MagicBlock");
@@ -54,12 +58,12 @@ public class MagicMod {
 		magicDust = new MagicDust();
 		GameRegistry.registerItem(magicDust, "MagicDust");
 		LanguageRegistry.addName(magicDust, "MagicDust");
-		
+
 		//MagicOre追加
 		magicOre = new MagicOre ();
 		GameRegistry.registerBlock(magicOre, "MagicOre");
 		LanguageRegistry.addName(magicOre, "MagicOre");
-		
+
 		//MagicWand追加
 		magicWand = new MagicWand();
 		GameRegistry.registerItem(magicWand, "MagicWand");
@@ -69,8 +73,15 @@ public class MagicMod {
 	@Mod.EventHandler
 	public void init(FMLInitializationEvent event){
 
-		//イベント登録
+		//鉱石生成イベント登録
 		MinecraftForge.ORE_GEN_BUS.register(this);
+
+		//二箇所に登録するので、先にインスタンスを生成しておく。
+		EntityPropertiesEventHandler entityPropertiesEventHandler = new EntityPropertiesEventHandler();
+		//Forge Eventの登録。EntityEvent.EntityConstructingとLivingDeathEventとEntityJoinWorldEvent
+		MinecraftForge.EVENT_BUS.register(entityPropertiesEventHandler);
+		//FML Eventの登録。PlayerRespawnEvent
+		FMLCommonHandler.instance().bus().register(entityPropertiesEventHandler);
 
 		//MagicBlock定型レシピ追加
 		GameRegistry.addRecipe(new ItemStack(magicBlock),
@@ -93,9 +104,9 @@ public class MagicMod {
 				" GD",
 				"G  ",
 				'D',Items.diamond,
-			    'M',magicBlock,
-			    'G',Blocks.gold_block
-			    );
+				'M',magicBlock,
+				'G',Blocks.gold_block
+				);
 		}
 
 	@SubscribeEvent

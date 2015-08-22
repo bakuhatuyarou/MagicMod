@@ -13,11 +13,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
 public class MagicOre extends Block {
-	{
-
-
-
-}
 	@SideOnly(Side.CLIENT)
 	private IIcon TopIcon;
 
@@ -88,8 +83,6 @@ public class MagicOre extends Block {
 		}
 		else{
 				return SideIcon;
-
-
 		}
 	}
 
