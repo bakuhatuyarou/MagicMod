@@ -2,8 +2,6 @@ package MagicMod;
 
 import java.util.Random;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -11,10 +9,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class MagicOre extends Block {
 	{
-		
+
 
 
 }
@@ -41,6 +41,11 @@ public class MagicOre extends Block {
 		setLightLevel(0.0F);/*明るさ 1.0F = 15*/
 	}
 
+	//ドロップアイテムの指定
+	@Override
+	public Item getItemDropped(int metadata, Random rand, int fortune){
+		return MagicMod.magicDust;
+	}
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float posX, float posY, float posZ){
 		//TODO: ブロックを右クリックした際の動作

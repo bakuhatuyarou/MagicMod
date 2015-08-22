@@ -35,6 +35,7 @@ public class MagicBlock extends Block {
 		/*disableStats();*//*ブロックの統計情報を保存しない*/
 		setLightOpacity(1);/*ブロックの透過係数。デフォルト０（不透過）*/
 		setLightLevel(0.3F);/*明るさ 1.0F = 15*/
+
 	}
 
 	@Override
