@@ -2,16 +2,15 @@ package MagicMod;
 
 import java.util.Random;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class MagicMass extends Block {
 
@@ -24,8 +23,13 @@ public class MagicMass extends Block {
 	public MagicMass() {
 
 		super(Material.rock);
+<<<<<<< HEAD
 		setCreativeTab(CreativeTabs.tabBlock);/*クリエイティブタブの選択*/
 		setBlockName("magicmass");/*システム名の設定*/
+=======
+		setCreativeTab(MagicMod.magicModCreativeTab);/*クリエイティブタブの選択*/
+		setBlockName("MagicMass");/*システム名の設定*/
+>>>>>>> 78e61e6d7e1e62ad0b4bd6006dca8dff84a351e8
 		setBlockTextureName("magicmod:MagicMass");/*ブロックのテクスチャの指定(複数指定の場合は消してください)*/
 		/*以下のものは消しても結構です*/
 		setHardness(2.0F);/*硬さ*/
