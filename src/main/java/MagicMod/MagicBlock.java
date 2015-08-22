@@ -40,7 +40,7 @@ public class MagicBlock extends Block {
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float posX, float posY, float posZ){
 		//TODO: ブロックを右クリックした際の動作
-		return true;
+		return false;
 	}
 
 	@Override
