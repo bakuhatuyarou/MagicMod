@@ -35,6 +35,7 @@ public class MagicMod {
 
 	//Item
 	public static Item magicDust;
+	public static Item magicWand;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -58,6 +59,11 @@ public class MagicMod {
 		magicOre = new MagicOre ();
 		GameRegistry.registerBlock(magicOre, "MagicOre");
 		LanguageRegistry.addName(magicOre, "MagicOre");
+		
+		//MagicWand追加
+		magicWand = new MagicWand();
+		GameRegistry.registerItem(magicWand, "MagicWand");
+		LanguageRegistry.addName(magicWand, "MagicWand");
 	}
 
 	@Mod.EventHandler
@@ -82,6 +88,14 @@ public class MagicMod {
 				'D',Items.diamond,
 				'M',magicDust
 				);
+		GameRegistry.addRecipe(new ItemStack(magicWand),
+				" DM",
+				" GD",
+				"G  ",
+				'D',Items.diamond,
+			    'M',magicBlock,
+			    'G',Blocks.gold_block
+			    );
 		}
 
 	@SubscribeEvent
