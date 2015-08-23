@@ -8,7 +8,7 @@ public class PacketHandler {
 
 	/*MOD固有のSimpleNetworkWrapperを取得。
 		* 文字列は他のMODと被らないようにMOD_IDを指定しておくと良い*/
-		public static final SimpleNetworkWrapper INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel("samplemod");
+		public static final SimpleNetworkWrapper INSTANCE = NetworkRegistry.INSTANCE.newSimpleChannel("MagicMod");
 
 		public static void init() {
 			/*Messageクラスの登録。

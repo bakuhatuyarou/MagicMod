@@ -14,7 +14,7 @@ public class ExtendedPlayerProperties implements IExtendedEntityProperties {
 
 	/* MOD固有の文字列。EntityPlayerに登録時に使用。
 	MOD内で複数のIExtendedEntityPropertiesを使う場合は、別の文字列をそれぞれ割り当てること。*/
-		public final static String EXT_PROP_NAME = "samplePlayerData";
+		public final static String EXT_PROP_NAME = "MagicPower";
 
 		private int sampleInt = 0;
 		private double sampleDouble = 0.0D;
