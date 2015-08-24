@@ -37,10 +37,12 @@ public class MagicMod {
 	public static Block magicBlock;
 	public static Block magicMass;
 	public static Block magicOre;
+	public static Block magicDiamondBlock;
 
 	//Item
 	public static Item magicDust;
 	public static Item magicWand;
+	public static Item magicDiamond;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -72,6 +74,16 @@ public class MagicMod {
 		magicWand = new MagicWand();
 		GameRegistry.registerItem(magicWand, "MagicWand");
 		LanguageRegistry.addName(magicWand, "MagicWand");
+		
+		//MagicDiamond追加
+		magicDiamond = new MagicDiamond();
+		GameRegistry.registerItem(magicDiamond, "MagicDiamond");
+		LanguageRegistry.addName(magicDiamond, "MagicDiamond");
+		
+		//MagicDiamondBlock追加
+		magicDiamondBlock = new MagicDiamondBlock ();
+		GameRegistry.registerBlock(magicDiamondBlock, "MagicDiamondBlock");
+		LanguageRegistry.addName(magicDiamondBlock, "MagicDiamondBlock");
 				
 	}
 
@@ -111,6 +123,20 @@ public class MagicMod {
 				'D',Items.diamond,
 				'M',magicBlock,
 				'G',Blocks.gold_block
+				);
+		GameRegistry.addRecipe(new ItemStack(magicDiamond),
+				"MmM",
+				"mDm",
+				"MmM",
+				'D',Items.diamond,
+				'M',magicDust,
+				'm',magicMass
+				);
+		GameRegistry.addRecipe(new ItemStack(magicDiamondBlock),
+				"MMM",
+				"MMM",
+				"MMM",
+				'M',magicDiamond
 				);
 		}
 
