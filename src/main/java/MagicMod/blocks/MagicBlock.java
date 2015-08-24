@@ -1,7 +1,9 @@
-package MagicMod;
+package MagicMod.blocks;
 
 import java.util.Random;
 
+import MagicMod.MagicMod;
+import MagicMod.MagicModCreativeTab;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -12,7 +14,7 @@ import net.minecraft.world.World;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class MagicMass extends Block {
+public class MagicBlock extends Block {
 
 	@SideOnly(Side.CLIENT)
 	private IIcon TopIcon;
@@ -20,12 +22,12 @@ public class MagicMass extends Block {
 	@SideOnly(Side.CLIENT)
 	private IIcon SideIcon;
 
-	public MagicMass() {
+	public MagicBlock() {
 
 		super(Material.rock);
 		setCreativeTab(MagicMod.magicModCreativeTab);/*クリエイティブタブの選択*/
-		setBlockName("MagicMass");/*システム名の設定*/
-		setBlockTextureName("magicmod:MagicMass");/*ブロックのテクスチャの指定(複数指定の場合は消してください)*/
+		setBlockName("MagicBlock");/*システム名の設定*/
+		setBlockTextureName("magicmod:MagicBlockCore");/*ブロックのテクスチャの指定(複数指定の場合は消してください)*/
 		/*以下のものは消しても結構です*/
 		setHardness(2.0F);/*硬さ*/
 		setResistance(2.5F);/*爆破耐性*/
@@ -35,6 +37,7 @@ public class MagicMass extends Block {
 		/*disableStats();*//*ブロックの統計情報を保存しない*/
 		setLightOpacity(1);/*ブロックの透過係数。デフォルト０（不透過）*/
 		setLightLevel(0.3F);/*明るさ 1.0F = 15*/
+
 	}
 
 	@Override
@@ -68,8 +71,8 @@ public class MagicMass extends Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister par1IconRegister){
-		this.TopIcon = par1IconRegister.registerIcon("magicmod:MagicMass");
-		this.SideIcon = par1IconRegister.registerIcon("magicmod:MagicMass");
+		this.TopIcon = par1IconRegister.registerIcon("magicmod:MagicBlockCore");
+		this.SideIcon = par1IconRegister.registerIcon("magicmod:MagicBlockCore");
 	}
 
 	@SideOnly(Side.CLIENT)

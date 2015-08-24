@@ -1,5 +1,6 @@
-package MagicMod;
+package MagicMod.items;
 
+import MagicMod.MagicMod;
 import net.minecraft.item.Item;
 
 public class MagicWand extends Item{

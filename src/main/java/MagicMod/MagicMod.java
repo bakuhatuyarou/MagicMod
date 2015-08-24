@@ -2,6 +2,13 @@ package MagicMod;
 
 import java.util.Random;
 
+import MagicMod.blocks.MagicBlock;
+import MagicMod.blocks.MagicDiamondBlock;
+import MagicMod.blocks.MagicMass;
+import MagicMod.blocks.MagicOre;
+import MagicMod.items.MagicDiamond;
+import MagicMod.items.MagicDust;
+import MagicMod.items.MagicWand;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
