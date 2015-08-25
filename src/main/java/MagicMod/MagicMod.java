@@ -10,6 +10,7 @@ import MagicMod.items.MagicDiamond;
 import MagicMod.items.MagicDust;
 import MagicMod.items.MagicWand;
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.IFuelHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
@@ -145,6 +146,17 @@ public class MagicMod {
 				"MMM",
 				'M',magicDiamond
 				);
+        GameRegistry.addSmelting(magicDiamond,new ItemStack(Items.diamond),0.3f);
+        
+        GameRegistry.registerFuelHandler(new IFuelHandler(){
+            @Override
+            public int getBurnTime(ItemStack fuel){
+                if(fuel.getItem().equals(Items.apple)){
+                    return 200;
+                }
+                return 0;
+            }
+        });
 		}
 
 	@SubscribeEvent
