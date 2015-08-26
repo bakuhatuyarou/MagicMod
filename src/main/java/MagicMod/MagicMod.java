@@ -2,19 +2,6 @@ package MagicMod;
 
 import java.util.Random;
 
-import net.minecraft.block.Block;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
-import net.minecraft.world.gen.feature.WorldGenMinable;
-import net.minecraft.world.gen.feature.WorldGenerator;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.event.terraingen.OreGenEvent;
-import net.minecraftforge.event.terraingen.TerrainGen;
 import MagicMod.blocks.MagicBlock;
 import MagicMod.blocks.MagicDiamondBlock;
 import MagicMod.blocks.MagicMass;
@@ -37,6 +24,19 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.LanguageRegistry;
+import net.minecraft.block.Block;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.world.World;
+import net.minecraft.world.gen.feature.WorldGenMinable;
+import net.minecraft.world.gen.feature.WorldGenerator;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.EnumHelper;
+import net.minecraftforge.event.terraingen.OreGenEvent;
+import net.minecraftforge.event.terraingen.TerrainGen;
 
 @Mod(modid = "MagicMod", name = "MagicMod", version = "1.0")
 public class MagicMod {
@@ -57,6 +57,7 @@ public class MagicMod {
 	public static Item magicDust;
 	public static Item magicWand;
 	public static Item magicDiamond;
+	public static Item salt;
 
 	//Tool
 	public static Item magicAxe;
@@ -105,9 +106,10 @@ public class MagicMod {
 		magicDiamondBlock = new MagicDiamondBlock ();
 		GameRegistry.registerBlock(magicDiamondBlock, "MagicDiamondBlock");
 		LanguageRegistry.addName(magicDiamondBlock, "MagicDiamondBlock");
+		
 
 		//マテリアル追加（ツール）
-		Item.ToolMaterial magicToolMaterial = EnumHelper.addToolMaterial("magicToolMaterial", 3, 2000, 5.0F, 6.0F, 10);
+		Item.ToolMaterial magicToolMaterial = EnumHelper.addToolMaterial("magicToolMaterial", 5, 10000, 8.0F, 8.0F, 10);
 		magicToolMaterial.setRepairItem(new ItemStack(magicDust));
 
 		//MagicAxe追加
@@ -134,6 +136,7 @@ public class MagicMod {
 		magicSword = new MagicSword(magicToolMaterial);
 		GameRegistry.registerItem(magicSword, "MagicSword");
 		LanguageRegistry.addName(magicSword, "MagicSword");
+		
 	}
 
 	@Mod.EventHandler
