@@ -2,23 +2,6 @@ package MagicMod;
 
 import java.util.Random;
 
-import MagicMod.blocks.MagicBlock;
-import MagicMod.blocks.MagicDiamondBlock;
-import MagicMod.blocks.MagicMass;
-import MagicMod.blocks.MagicOre;
-import MagicMod.items.MagicDiamond;
-import MagicMod.items.MagicDust;
-import MagicMod.items.MagicWand;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.IFuelHandler;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.LanguageRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
@@ -29,8 +12,31 @@ import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.event.terraingen.OreGenEvent;
 import net.minecraftforge.event.terraingen.TerrainGen;
+import MagicMod.blocks.MagicBlock;
+import MagicMod.blocks.MagicDiamondBlock;
+import MagicMod.blocks.MagicMass;
+import MagicMod.blocks.MagicOre;
+import MagicMod.items.MagicDiamond;
+import MagicMod.items.MagicDust;
+import MagicMod.items.MagicWand;
+import MagicMod.tools.MagicAxe;
+import MagicMod.tools.MagicHoe;
+import MagicMod.tools.MagicPickaxe;
+import MagicMod.tools.MagicShovel;
+import MagicMod.tools.MagicSword;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.IFuelHandler;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.LanguageRegistry;
 
 @Mod(modid = "MagicMod", name = "MagicMod", version = "1.0")
 public class MagicMod {
@@ -51,6 +57,13 @@ public class MagicMod {
 	public static Item magicDust;
 	public static Item magicWand;
 	public static Item magicDiamond;
+
+	//Tool
+	public static Item magicAxe;
+	public static Item magicHoe;
+	public static Item magicPickaxe;
+	public static Item magicShovel;
+	public static Item magicSword;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -82,17 +95,45 @@ public class MagicMod {
 		magicWand = new MagicWand();
 		GameRegistry.registerItem(magicWand, "MagicWand");
 		LanguageRegistry.addName(magicWand, "MagicWand");
-		
+
 		//MagicDiamond追加
 		magicDiamond = new MagicDiamond();
 		GameRegistry.registerItem(magicDiamond, "MagicDiamond");
 		LanguageRegistry.addName(magicDiamond, "MagicDiamond");
-		
+
 		//MagicDiamondBlock追加
 		magicDiamondBlock = new MagicDiamondBlock ();
 		GameRegistry.registerBlock(magicDiamondBlock, "MagicDiamondBlock");
 		LanguageRegistry.addName(magicDiamondBlock, "MagicDiamondBlock");
-				
+
+		//マテリアル追加（ツール）
+		Item.ToolMaterial magicToolMaterial = EnumHelper.addToolMaterial("magicToolMaterial", 3, 2000, 5.0F, 6.0F, 10);
+		magicToolMaterial.setRepairItem(new ItemStack(magicDust));
+
+		//MagicAxe追加
+		magicAxe = new MagicAxe(magicToolMaterial);
+		GameRegistry.registerItem(magicAxe, "MagicAxe");
+		LanguageRegistry.addName(magicAxe, "MagicAxe");
+
+		//MagicHoe追加
+		magicHoe = new MagicHoe(magicToolMaterial);
+		GameRegistry.registerItem(magicHoe, "MagicHoe");
+		LanguageRegistry.addName(magicHoe, "MagicHoe");
+
+		//MagicPickaxe追加
+		magicPickaxe = new MagicPickaxe(magicToolMaterial);
+		GameRegistry.registerItem(magicPickaxe, "MagicPickaxe");
+		LanguageRegistry.addName(magicPickaxe, "MagicPickaxe");
+
+		//MagicShovel追加
+		magicShovel = new MagicShovel(magicToolMaterial);
+		GameRegistry.registerItem(magicShovel, "MagicShovel");
+		LanguageRegistry.addName(magicShovel, "MagicShovel");
+
+		//MagicSword追加
+		magicSword = new MagicSword(magicToolMaterial);
+		GameRegistry.registerItem(magicSword, "MagicSword");
+		LanguageRegistry.addName(magicSword, "MagicSword");
 	}
 
 	@Mod.EventHandler
@@ -146,17 +187,17 @@ public class MagicMod {
 				"MMM",
 				'M',magicDiamond
 				);
-        GameRegistry.addSmelting(magicDiamond,new ItemStack(Items.diamond),0.3f);
-        
-        GameRegistry.registerFuelHandler(new IFuelHandler(){
-            @Override
-            public int getBurnTime(ItemStack fuel){
-                if(fuel.getItem().equals(Items.apple)){
-                    return 200;
-                }
-                return 0;
-            }
-        });
+		GameRegistry.addSmelting(magicDiamond,new ItemStack(Items.diamond),0.3f);
+
+		GameRegistry.registerFuelHandler(new IFuelHandler(){
+			@Override
+			public int getBurnTime(ItemStack fuel){
+				if(fuel.getItem().equals(Items.apple)){
+					return 200;
+				}
+				return 0;
+			}
+		});
 		}
 
 	@SubscribeEvent
